@@ -1,33 +1,13 @@
+import 'package:appcomics/constans.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 
-import '../constans.dart';
-
-class Home extends StatefulWidget {
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  int indexTap = 0;
-  final List<Widget> widgetsChildren = [];
-
-  void onTapTapped(int index) {
-    setState(() {
-      indexTap = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: widgetsChildren[indexTap],
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
+Container miCont (onTapTapped,indexTap,context){
+  return Container(
+    decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Colors.red,
+              color: Colors.grey,
               blurRadius: 25,
               spreadRadius: 10,
             ),
@@ -40,11 +20,12 @@ class _HomeState extends State<Home> {
           currentIndex: indexTap,
           items: [
             BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage("assets/icon/characters.png")),
+              icon: ImageIcon(AssetImage("assets/icon/characters.png"),
+              color: terc,),
               title: Text(
                 "Comics",
                 style: TextStyle(
-                  color: terc,
+                  color: secondary,
                   fontSize: MediaQuery.of(context).textScaleFactor * 14,
                   fontFamily: fontFamily,
                   fontWeight: FontWeight.w600,
@@ -52,20 +33,20 @@ class _HomeState extends State<Home> {
               ),
             ),
             BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage("assets/icon/characters.png")),
+              icon: ImageIcon(AssetImage("assets/icon/btn-favourites-default.png"),color: terc,
+              ),
               title: Text(
                 "Favourite",
                 style: TextStyle(
-                  color: terc,
+                  color: secondary,
                   fontSize: MediaQuery.of(context).textScaleFactor * 14,
                   fontFamily: fontFamily,
                   fontWeight: FontWeight.w600,
                 ),
               ),
+              
             ),
           ],
         ),
-      )
-    );
-  }
+  );
 }

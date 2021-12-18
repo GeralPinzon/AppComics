@@ -1,7 +1,8 @@
 import 'dart:convert';
-import 'package:appcomics/constans.dart';
 import 'package:appcomics/models/Personajes.dart';
+import 'package:appcomics/widgets/ButtomNav.dart';
 import 'package:appcomics/widgets/appbar.widget.dart';
+import 'package:appcomics/widgets/card.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -22,14 +23,14 @@ class _MyAppState extends State<MyApp> {
     List<Personajes> person = [];
     
     if(response.statusCode == 200){
-      print("200");
+      
       String body = utf8.decode(response.bodyBytes);
       final jsonData = jsonDecode(body);
       
       for(var item in jsonData["data"]["results"]){
+        String description = item["description"] == "" ? "No description available" : item["description"];
         
-        person.add(Personajes(item["name"], item["thumbnail"]["path"],item["description"], item["comics"]["available"]));
-        
+        person.add(Personajes(item["id"],item["name"], item["thumbnail"]["path"],description, item["comics"]["available"]));        
       }
       
       return person;
@@ -55,7 +56,7 @@ class _MyAppState extends State<MyApp> {
        
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'ComicsApp'),
       
     );
   }
@@ -99,91 +100,14 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         }
       ), 
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey,
-              blurRadius: 25,
-              spreadRadius: 10,
-            ),
-          ],
-        ),
-        child: BottomNavigationBar(
-          backgroundColor: tertiary,
-          elevation: 10,
-          onTap: onTapTapped,
-          currentIndex: indexTap,
-          items: [
-            BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage("assets/icon/characters.png"),
-              color: terc,),
-              title: Text(
-                "Comics",
-                style: TextStyle(
-                  color: secondary,
-                  fontSize: MediaQuery.of(context).textScaleFactor * 14,
-                  fontFamily: fontFamily,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage("assets/icon/btn-favourites-default.png"),
-              color: terc,),
-              title: Text(
-                "Favourite",
-                style: TextStyle(
-                  color: secondary,
-                  fontSize: MediaQuery.of(context).textScaleFactor * 14,
-                  fontFamily: fontFamily,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          ],
-        ),
-      )
+      bottomNavigationBar: miCont(onTapTapped,indexTap,context )
     );
   }
   List<Widget> _listaPersonajes(datas){
     List<Widget> personajes = [];
     for (var personaje in datas){
       personajes.add(
-        Card(
-          clipBehavior: Clip.antiAlias,
-              child: Column(
-                children: [
-                  Image.network(personaje.url, height: 50,fit:BoxFit.fill),
-                  ListTile(
-                    
-                    title:  Text(personaje.name),
-                    subtitle: Text(
-                      personaje.comics.toString(),
-                      style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Text(
-                      personaje.descripcion,
-                      style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                    ),
-                  ),
-                  ButtonBar(
-                    alignment: MainAxisAlignment.start,
-                    children: [
-                      FlatButton(
-                        onPressed: () {
-                          // Perform some action
-                        },
-                        child: const Text('Ver Comics'),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),    
+        miCard(personaje,context)
       );
     }
     return personajes;
