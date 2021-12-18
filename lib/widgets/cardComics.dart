@@ -26,7 +26,7 @@ Card miCardComic(Comics comic,context) {
               onPressed: (){},
             ),
             TextButton.icon(
-              icon: ImageIcon(AssetImage("assets/icon/shopping-cart-primary.png")), // Your icon here
+              icon: Icon(Icons.add_shopping_cart), // Your icon here
               label: Text("BUY FOR: "+comic.precio.toString()) , // Your text here
               onPressed: (){},
               style: TextButton.styleFrom(padding: EdgeInsets.only(top: 8, bottom: 9, right: 5, left: 53),
