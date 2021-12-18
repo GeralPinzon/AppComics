@@ -31,9 +31,11 @@ Container miCont (onTapTapped,indexTap,context){
                   fontWeight: FontWeight.w600,
                 ),
               ),
+              
             ),
             BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage("assets/icon/btn-favourites-default.png"),color: terc,
+              icon: ImageIcon(AssetImage("assets/icon/btn-favourites-default.png"),
+              color: terc,
               ),
               title: Text(
                 "Favourite",

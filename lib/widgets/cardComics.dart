@@ -21,15 +21,15 @@ Card miCardComic(Comics comic,context) {
             TextButton.icon(
               icon: ImageIcon(AssetImage("assets/icon/btn-favourites-default.png"), color: Colors.black54,), // Your icon here
               label: Text("ADD YOUR FAVOURITES"), 
-              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.black26)),
               // Your text here
               onPressed: (){},
+              style: TextButton.styleFrom(primary: Colors.black54,backgroundColor: Colors.black12)
             ),
             TextButton.icon(
-              icon: Icon(Icons.add_shopping_cart, color: terc,), // Your icon here
+              icon: Icon(Icons.add_shopping_cart, color: Colors.red,), // Your icon here
               label: Text("BUY FOR: "+comic.precio.toString()) , // Your text here
               onPressed: (){},
-              style: TextButton.styleFrom(padding: EdgeInsets.only(top: 8, bottom: 9, right: 5, left: 53),
+              style: TextButton.styleFrom(primary: Colors.red,padding: EdgeInsets.only(top: 8, bottom: 9, right: 5, left: 53),
               backgroundColor: Colors.red[900], 
               //ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.red)),
               
