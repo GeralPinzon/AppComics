@@ -19,14 +19,14 @@ Card miCardComic(Comics comic,context) {
           
           children: <Widget>[
             TextButton.icon(
-              icon: ImageIcon(AssetImage("assets/icon/btn-favourites-default.png")), // Your icon here
+              icon: ImageIcon(AssetImage("assets/icon/btn-favourites-default.png"), color: Colors.black54,), // Your icon here
               label: Text("ADD YOUR FAVOURITES"), 
               style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.black26)),
               // Your text here
               onPressed: (){},
             ),
             TextButton.icon(
-              icon: Icon(Icons.add_shopping_cart), // Your icon here
+              icon: Icon(Icons.add_shopping_cart, color: terc,), // Your icon here
               label: Text("BUY FOR: "+comic.precio.toString()) , // Your text here
               onPressed: (){},
               style: TextButton.styleFrom(padding: EdgeInsets.only(top: 8, bottom: 9, right: 5, left: 53),
