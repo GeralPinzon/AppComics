@@ -26,11 +26,10 @@ class _specificComicsState extends State<specificComics> {
     });
   }
   Future<List<Comics>> _getComics() async{
-    final response = await http.get(Uri.parse("https://gateway.marvel.com:443/v1/public/characters/1011334/comics?ts=1&apikey=832099c8290566dfea84ccb85622872e&hash=f4d59094fa39b3839c142b31bd9d4dd0"));
+    final response = await http.get(Uri.parse("https://gateway.marvel.com:443/v1/public/characters/"+widget.id+"/comics?ts=1&apikey=832099c8290566dfea84ccb85622872e&hash=f4d59094fa39b3839c142b31bd9d4dd0"));
     List<Comics> comics = [];
     
     if(response.statusCode == 200){
-      print("20022");
       String body = utf8.decode(response.bodyBytes);
       final jsonData = jsonDecode(body);
       //print(jsonData["data"]["results"]);
