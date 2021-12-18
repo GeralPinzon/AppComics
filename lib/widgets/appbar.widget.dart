@@ -21,8 +21,21 @@ class AppBarCustom extends StatelessWidget implements PreferredSize{
 
         margin: EdgeInsets.symmetric(horizontal: 10),
         child: Row(
+          
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
+            RaisedButton(color: Colors.black12,
+                    textColor: terc,
+                    child: Text(
+                      "Volver",
+                      style: TextStyle(
+                        fontSize: 20.0,
+                      ),
+                    ),
+              onPressed: () {
+                Navigator.pop(context);
+              }, 
+            ),
             Text(
               'ComicsApp',
               style: TextStyle(

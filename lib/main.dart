@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:appcomics/models/Personajes.dart';
+import 'package:appcomics/pages/specificComics.dart';
 import 'package:appcomics/widgets/ButtomNav.dart';
 import 'package:appcomics/widgets/appbar.widget.dart';
 import 'package:appcomics/widgets/card.dart';
@@ -72,13 +73,15 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int indexTap = 0;
-  final List<Widget> widgetsChildren = [];
+  final List<Widget> widgetsChildren = [MyApp(),specificComics()];
 
   void onTapTapped(int index) {
     setState(() {
       indexTap = index;
     });
   }
+
+
   @override
   Widget build(BuildContext context) {
     
@@ -100,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         }
       ), 
-      bottomNavigationBar: miCont(onTapTapped,indexTap,context )
+      bottomNavigationBar: miCont(onTapTapped, indexTap, context)
     );
   }
   List<Widget> _listaPersonajes(datas){

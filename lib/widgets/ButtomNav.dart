@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 
 Container miCont (onTapTapped,indexTap,context){
+  
   return Container(
     decoration: BoxDecoration(
           boxShadow: [
@@ -23,7 +24,7 @@ Container miCont (onTapTapped,indexTap,context){
               icon: ImageIcon(AssetImage("assets/icon/characters.png"),
               color: terc,),
               title: Text(
-                "Comics",
+                "Characters",
                 style: TextStyle(
                   color: secondary,
                   fontSize: MediaQuery.of(context).textScaleFactor * 14,
@@ -34,6 +35,7 @@ Container miCont (onTapTapped,indexTap,context){
               
             ),
             BottomNavigationBarItem(
+              
               icon: ImageIcon(AssetImage("assets/icon/btn-favourites-default.png"),
               color: terc,
               ),
@@ -49,6 +51,7 @@ Container miCont (onTapTapped,indexTap,context){
               
             ),
           ],
+          
         ),
   );
 }
